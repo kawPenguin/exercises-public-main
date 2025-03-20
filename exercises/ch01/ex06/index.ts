@@ -11,8 +11,3 @@ export function fib(n:number):number{
     return fib_value[2];
 
 }
-
-
-console.log(`fib(5) : ` + fib(5));
-
-console.log(`fib(75) : ` + fib(75));
