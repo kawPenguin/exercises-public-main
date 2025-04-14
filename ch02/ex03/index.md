@@ -1,0 +1,2 @@
+windows -> NFC
+Mac -> NFD
