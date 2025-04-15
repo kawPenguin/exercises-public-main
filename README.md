@@ -38,8 +38,8 @@
 # プログラムを実行 (JS)
 > node ch01/ex09/index.js
 
-# プログラムを実行 (TS)
-> npx ts-node ch01/ex09/index.ts
+# プログラムを実行 (TS) <- ts-nodeで実行できず、tsxでお願いいたします。
+> npx tsx ch01/ex09/index.ts
 
 # プログラムを実行 (TS, Node.js >= 20)
 > npx node --loader ts-node/esm ch01/ex09/index.ts
