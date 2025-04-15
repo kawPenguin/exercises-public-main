@@ -5,7 +5,7 @@ a
 =
 3
 console.log(a)`;
-const code2 = `let a; a = 3`;
+const code2 = `let a; a = 3; console.log(a);`;
 
 const ast = acorn.parse(code,  {ecmaVersion: 2020});
 console.log(ast);

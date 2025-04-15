@@ -1,5 +1,7 @@
-#ソースコード1
-##　ソースコード
+# 問題 2.8
+
+## ソースコード1
+###　ソースコード
 ``` javascript
 let a
 a
@@ -8,7 +10,7 @@ a
 console.log(a)
 ```
 
-##　JSON
+###　JSON
 Node {
   type: 'Program',
   start: 0,
@@ -37,16 +39,15 @@ Node {
   sourceType: 'script'
 }
 
-## 図
-
+## ソースコード2
 ``` javascript
 let a; a = 3; console.log(a);
 ```
-
+###　JSON
 Node {
   type: 'Program',
   start: 0,
-  end: 12,
+  end: 29,
   body: [
     Node {
       type: 'VariableDeclaration',
@@ -58,9 +59,20 @@ Node {
     Node {
       type: 'ExpressionStatement',
       start: 7,
-      end: 12,
+      end: 13,
+      expression: [Node]
+    },
+    Node {
+      type: 'ExpressionStatement',
+      start: 14,
+      end: 29,
       expression: [Node]
     }
   ],
   sourceType: 'script'
 }
+
+
+## 図
+
+<img src="./AST_Image.png" width="30%">
