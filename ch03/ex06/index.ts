@@ -1,4 +1,4 @@
-export function slice<T>(input:string, start: number, end?: number): T[] | string {
+export function slice(input:string, start: number, end?: number):string {
   // 配列または文字列の長さを取得
   const length = input.length;
 
@@ -15,9 +15,6 @@ export function slice<T>(input:string, start: number, end?: number): T[] | strin
   }
   
   // endの正規化
-
-
-
   let normalizedEnd;
 
   if (end === undefined) {
@@ -32,7 +29,7 @@ export function slice<T>(input:string, start: number, end?: number): T[] | strin
   
   // startがendより大きい場合は空の結果を返す
   if (normalizedStart >= normalizedEnd) {
-    return typeof input === 'string' ? '' : [];
+    return "";
   }
   
   // 入力が文字列の場合
