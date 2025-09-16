@@ -1,3 +1,5 @@
+import { join } from "path";
+
 export async function fetchSumOfFileSizes(path) {
   try {
     const files = await fs.readdir(path);

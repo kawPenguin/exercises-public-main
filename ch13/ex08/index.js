@@ -1,4 +1,4 @@
-import fs, { fstat } from 'fs';
+import fs from 'fs';
 import { join } from 'path';
 
 /**
@@ -10,7 +10,7 @@ export async function fetchFirstFileSize(path) {
     if (files.length === 0) {
       return null;
     }
-    const stats = await fstat.stat(join(path, files[0]));
+    const stats = await fs.stat(join(path, files[0]));
     return stats.size;
   } catch (err) {
     // エラーが発生した場合は、呼び出し元でキャッチできるように再スローします。
