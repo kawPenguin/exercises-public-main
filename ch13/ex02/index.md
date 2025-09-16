@@ -286,7 +286,7 @@ function f11() {
 即座に X が出力される。
 
 説明:
-new Promise のコンストラクタに渡すexecutor関数内で同期的にスローされた例外は、Promiseによって自動的に捕捉され、そのPromiseは rejected 状態になります。この rejected は後続の .catch で処理される。
+new Promise のコンストラクタに渡すexecutor関数内で同期的にスローされた例外は、Promiseによって自動的に捕捉され、そのPromiseは rejected 状態になる。この rejected は後続の .catch で処理される。
 
 ```mermaid
 gantt

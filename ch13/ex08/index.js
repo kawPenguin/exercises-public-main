@@ -1,4 +1,5 @@
 import fs, { fstat } from 'fs';
+import { join } from 'path';
 
 /**
  * ディレクトリ内の最初のファイルのサイズを取得します。

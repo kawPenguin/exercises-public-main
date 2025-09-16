@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 export async function* walk(rootPath) {
   try {
     // ルートパス直下のファイル/ディレクトリ名リストを非同期で取得

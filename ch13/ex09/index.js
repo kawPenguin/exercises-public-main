@@ -8,7 +8,6 @@ function wait(msec) {
 }
 
 // 0, 1, 2, 3 秒待つ
-const wait0 = () => wait(0);
 const wait1 = () => wait(1000);
 const wait2 = () => wait(2000);
 const wait3 = () => wait(3000);
