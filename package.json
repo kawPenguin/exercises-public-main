@@ -6,7 +6,8 @@
     "test": "jest --runInBand",
     "test:browser": "playwright test",
     "server": "tsc -b tsconfig.front.json && serve",
-    "lint-fix": "eslint . --max-warnings=0",
+    "lint": "eslint. --max-warnings=0",
+    "lint-fix": "eslint . --fix",
     "format": "prettier --write ."
   },
   "author": "",

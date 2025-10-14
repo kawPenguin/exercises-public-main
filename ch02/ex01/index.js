@@ -28,9 +28,9 @@ class Histogram {
         const replaceText = text.replace(/\s/g, "").toUpperCase();
 
         // テキスト中の文字をループする
-        for (let character of replaceText) {
+        for (const character of replaceText) {
             // 文字の現在のカウントを取得し、存在しない場合は0から開始
-            let count = this.letterCounts.get(character) || 0;
+            const count = this.letterCounts.get(character) || 0;
             this.letterCounts.set(character, count + 1);
             this.totalLetters++;
         }
@@ -49,14 +49,14 @@ class Histogram {
         });
 
         //文字数をパーセントへ変換
-        for(let entry of entries){
+        for(const entry of entries){
             entry[1] = entry[1] / this.totalLetters*100;
         }
 
         //1パーセント未満は表示しない
         entries = entries.filter(entry => entry[1] >= 1);
 
-        let lines = entries.map(
+        const lines = entries.map(
             ([l,n]) => `${l}: ${"#".repeat(Math.round(n))} ${n.toFixed(2)}%`);
         
 
@@ -67,8 +67,8 @@ class Histogram {
 
 async function histogramFromStdin(){
     process.stdin.setEncoding("utf-8");
-    let histogram = new Histogram();
-    for await(let chunk of process.stdin){
+    const histogram = new Histogram();
+    for await(const chunk of process.stdin){
         histogram.add(chunk);
     }
     return histogram;

@@ -38,8 +38,8 @@ class Histogram {
         text = text.replace(/\s/g, "").toUpperCase();
 
         // Now loop through the characters of the text
-        for(let character of text) {
-            let count = this.letterCounts.get(character); // Get old count
+        for(const character of text) {
+            const count = this.letterCounts.get(character); // Get old count
             this.letterCounts.set(character, count+1);    // Increment it
             this.totalLetters++;
         }
@@ -60,7 +60,7 @@ class Histogram {
         });
 
         // Convert the counts to percentages
-        for(let entry of entries) {
+        for(const entry of entries) {
             entry[1] = entry[1] / this.totalLetters*100;
         }
 
@@ -68,7 +68,7 @@ class Histogram {
         entries = entries.filter(entry => entry[1] >= 1);
 
         // Now convert each entry to a line of text
-        let lines = entries.map(
+        const lines = entries.map(
             ([l,n]) => `${l}: ${"#".repeat(Math.round(n))} ${n.toFixed(2)}%`
         );
 
@@ -82,8 +82,8 @@ class Histogram {
 // the histogram. When it reaches the end of the stream, it returns this histogram
 async function histogramFromStdin() {
     process.stdin.setEncoding("utf-8"); // Read Unicode strings, not bytes
-    let histogram = new Histogram();
-    for await (let chunk of process.stdin) {
+    const histogram = new Histogram();
+    for await (const chunk of process.stdin) {
         histogram.add(chunk);
     }
     return histogram;

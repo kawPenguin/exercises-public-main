@@ -5,9 +5,9 @@
 また同様に、`Object`, `Array`, `Date`, `Map` のプロトタイプチェーンの継承関係を確認するためのコードも書きなさい。
  */
 
-let o = {};
+const o = {};
 o.x = 1;
-let p = Object.create(o);
+const p = Object.create(o);
 p.y = 2;
 
 // o が p のプロトタイプチェーン上に存在することを確認
@@ -15,9 +15,9 @@ console.log(o.isPrototypeOf(p)); // true
 // p が q のプロトタイプチェーン上に存在することを確認
 
 
-let q = Object.create(p);   
+const q = Object.create(p);   
 q.z = 3;
-let f = q.toString();
+const f = q.toString();
 q.x + q.y
 
 // p が q のプロトタイプチェーン上に存在することを確認

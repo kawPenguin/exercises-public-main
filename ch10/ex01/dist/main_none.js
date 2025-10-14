@@ -9,7 +9,7 @@ const square = x => x * x;
 
 exports.mean = data => data.reduce(sum)/data.length;
 exports.stddev = function(d){
-    let m = exports.mean(d);
+    const m = exports.mean(d);
     return Math.sqrt(d.map(x => x - m).map(square).reduce(sum)/(d.length-1))
 };
 
@@ -45,7 +45,7 @@ class AbstractEnumerableSet extends AbstractSet {
         // 大きさが同じでなければ、等しくない。
         if (this.size !== set.size) return false;
         // このセットの要素を巡回する。
-        for(let element of this) {
+        for(const element of this) {
         // 要素が比較対象のセットのメンバーでなければ、等しくない。
         if (!set.has(element)) return false;
         }
@@ -66,17 +66,17 @@ class AbstractWritableSet extends AbstractEnumerableSet {
     insert(x) { throw new Error("Abstract method"); }
     remove(x) { throw new Error("Abstract method"); }
     add(set) {
-        for(let element of set) {
+        for(const element of set) {
         this.insert(element);
     }
     }
     subtract(set) {
-        for(let element of set) {
+        for(const element of set) {
             this.remove(element);
         }
     }
     intersect(set) {
-        for(let element of this) {
+        for(const element of this) {
             if (!set.has(element)) {
                 this.remove(element);
             }
@@ -105,8 +105,8 @@ class BitSet extends AbstractWritableSet {
     // 値xがBitSetに含まれるかどうか。
     has(x) {
         if (this._valid(x)) {
-            let byte = Math.floor(x / 8);
-            let bit = x % 8;
+            const byte = Math.floor(x / 8);
+            const bit = x % 8;
             return this._has(byte, bit);
         } else {
             return false;
@@ -116,8 +116,8 @@ class BitSet extends AbstractWritableSet {
     // 値xをBitSetに挿入する。
     insert(x) {
         if (this._valid(x)) { // 値が正当な場合、
-            let byte = Math.floor(x / 8); // バイトとビットに変換する。
-            let bit = x % 8;
+            const byte = Math.floor(x / 8); // バイトとビットに変換する。
+            const bit = x % 8;
             if (!this._has(byte, bit)) { // そのビットがまだ立っていない場合、
                 this.data[byte] |= BitSet.bits[bit]; // ビットを立てる。
                 this.n++; // セットの大きさをインクリメントする。
@@ -129,8 +129,8 @@ class BitSet extends AbstractWritableSet {
 
     remove(x) {
         if (this._valid(x)) { // 値が正当な場合、
-            let byte = Math.floor(x / 8); // バイトとビットを計算する。
-            let bit = x % 8;
+            const byte = Math.floor(x / 8); // バイトとビットを計算する。
+            const bit = x % 8;
             if (this._has(byte, bit)) { // そのビットが立っていた場合、
                 this.data[byte] &= BitSet.masks[bit]; // ビットを落とす。
                 this.n--; // セットの大きさをデクリメントする。
@@ -193,12 +193,12 @@ const stats = __webpack_require__(1);
 const BitSet = (__webpack_require__(2).BitSet);
 
 // モジュールを使ってコードを記述
-let s = new BitSet(100);
+const s = new BitSet(100);
 s.insert(10);
 s.insert(20);
 s.insert(30);
 
-let average = stats.mean([...s]);
+const average = stats.mean([...s]);
 })();
 
 /******/ })()

@@ -20,7 +20,7 @@ function counter(n){
  */
 
 export function counterGroup(){
-    let counters = [];
+    const counters = [];
 
     return {
         newCounter(){

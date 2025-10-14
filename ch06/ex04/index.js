@@ -3,7 +3,7 @@
 このメソッドを使って明示的に各属性を設定したプロパティを定義し、プロパティの変更、削除、`hasOwnProperty` と `propertyIsEnumerable` の結果に対してどのように影響するか確認するコードを書きなさい。
  */
 
-let obj = {};
+const obj = {};
 Object.defineProperty(obj, 'prop', {
   value: 42,
   writable: true,

@@ -1,5 +1,5 @@
 // 変数の宣言
-let declaredVariable = 10;
+const declaredVariable = 10;
 console.log("strict モード (修正済): declaredVariable =", declaredVariable);
 
 // with 文の削除

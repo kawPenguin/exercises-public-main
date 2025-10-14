@@ -12,7 +12,7 @@ class Example {
     }
   }
   
-  let obj = new Example(12);
+  const obj = new Example(12);
 
   console.log(obj*2);
 

@@ -6,7 +6,7 @@ export class TypedMap {
         this.valueType = valueType;
         
         if (entries) {
-            for (let [k, v] of entries) {
+            for (const [k, v] of entries) {
                 if (typeof k !== keyType || typeof v !== valueType) {
                     throw new TypeError(`Wrong type for entry [${k}, ${v}]`);
                 }
