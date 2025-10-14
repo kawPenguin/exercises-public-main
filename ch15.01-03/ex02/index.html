@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動的インポート動作確認</title>
+</head>
+<body>
+    <h1>動的インポート動作確認</h1>
+    <p>このテキストが赤くなれば成功</p>
+    <button id="btn">実行</button>
+
+    <script type="module">
+        document.getElementById('btn').addEventListener('click', async () => {
+            const { $ } = await import(
+                "https://releases.jquery.com/git/jquery-git.module.min.js"
+            );
+            $("*").css("color", "red");
+        });
+    </script>
+</body>
+</html>

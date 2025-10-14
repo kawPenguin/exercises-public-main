@@ -1,0 +1,22 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>設問04</title>
+</head>
+<body>
+    <h1>設問04</h1>
+
+    <div id="test1">テスト1: 待機中...</div>
+    <div id="test2">テスト2: 待機中...</div>
+
+    <!-- 正しいハッシュ値 -->
+    <script integrity="sha384-VLixbLfebEZ4WvVg4troNupgLe9DR65C1Q8rDHhE1GVxMtNgL+CQ5U8b1YF2jT7j">
+        document.getElementById('test1').innerHTML = '正しいハッシュで実行';
+    </script>
+
+    <!-- 間違ったハッシュ値 -->
+    <script integrity="sha384-wronghash" onerror="document.getElementById('test2').innerHTML='ハッシュ不一致でブロック';">
+        document.getElementById('test2').innerHTML = 'このメッセージは表示されない';
+    </script>
+</body>
+</html>

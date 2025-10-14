@@ -2,8 +2,10 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   webServer: {
-    command: "npm run server",
+    command: "npx http-server -p 3000",
     port: 3000,
+    timeout: 120 * 1000, // サーバー起動のタイムアウトを120秒に延長
+    reuseExistingServer: !process.env.CI, // CI環境でなければ既存サーバーを再利用
   },
   use: {
     headless: true,

@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>警告 - システムセキュリティ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'MS Gothic', monospace;
+            background: #000;
+            color: #0f0;
+            padding: 20px;
+        }
+        .warning-header {
+            background: #f00;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: 3px solid #ff0;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        .info-box {
+            background: #0a0a0a;
+            border: 1px solid #0f0;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        .info-label {
+            color: #ff0;
+            display: inline-block;
+            width: 150px;
+        }
+        .info-value {
+            color: #0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="warning-header">
+        ⚠️ 警告！ウイルスが検出されました！⚠️
+    </div>
+
+    <div style="background: #1a1a1a; padding: 20px; border: 2px solid #f00; margin-top: 20px;">
+        <h2 style="color: #f00; margin-bottom: 15px;">検出された情報：</h2>
+      
+        <div class="info-box">
+            <span class="info-label">ブラウザ:</span>
+            <span class="info-value" id="browser"></span>
+        </div>
+
+        <div class="info-box">
+            <span class="info-label">OS:</span>
+            <span class="info-value" id="os"></span>
+        </div>
+
+
+        <div class="info-box">
+            <span class="info-label">言語:</span>
+            <span class="info-value" id="language"></span>
+        </div>
+
+        <div class="info-box">
+            <span class="info-label">CPU コア数:</span>
+            <span class="info-value" id="cores"></span>
+        </div>
+
+        <div class="info-box">
+            <span class="info-label">メモリ容量:</span>
+            <span class="info-value" id="memory"></span>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('browser').textContent = navigator.userAgent;
+        document.getElementById('os').textContent = navigator.platform;
+        document.getElementById('language').textContent = navigator.language;
+        document.getElementById('cores').textContent = navigator.hardwareConcurrency || '不明';
+        document.getElementById('memory').textContent = navigator.deviceMemory ? `約${navigator.deviceMemory}GB` : '不明';
+    </script>
+</body>
+</html>

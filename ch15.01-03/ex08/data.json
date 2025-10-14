@@ -1,0 +1,6 @@
+
+{
+  "_comment": "ページを読み込んだ際にアラートが実行",
+  "name": "<img src=x onerror=alert('XSS')>",
+  "age": 50
+}
