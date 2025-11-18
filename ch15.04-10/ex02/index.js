@@ -19,7 +19,13 @@ form.addEventListener("submit", (e) => {
 
   toggle.addEventListener("change", () => {
     // IMPORTANT: ChatGPT にはこの関数内のコードのみ変更してもらうこと
-    li.classList.toggle("completed", toggle.checked);
+    if (toggle.checked) {
+      li.classList.add("opacity-60");
+      label.classList.add("line-through", "text-gray-500");
+    } else {
+      li.classList.remove("opacity-60");
+      label.classList.remove("line-through", "text-gray-500");
+    }
   });
   label.textContent = todo;
   destroy.addEventListener("click", () => {

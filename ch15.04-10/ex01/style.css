@@ -1,0 +1,148 @@
+/*レガシーなデザインにしてください。*/
+
+/* すべての要素でボックスモデルをborder-boxに統一 */
+* {
+  box-sizing: border-box;
+}
+
+/* MSゴシックフォント、グラデーション背景、スクロール時に背景を固定 */
+body {
+  font-family: "MS ゴシック", "Courier New", monospace;
+  background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+  margin: 0;
+  padding: 20px;
+  background-attachment: fixed;
+}
+
+/* フォーム領域にグラデーション背景、枠線、内側と外側の影*/
+#new-todo-form {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
+  border: 2px solid #999;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+}
+
+/* テキスト入力フィールドの幅、枠線、パディング、フォント設定 */
+#new-todo {
+  width: calc(100% - 70px);
+  padding: 8px 10px;
+  border: 2px solid #999;
+  border-radius: 3px;
+  font-family: "MS ゴシック", "Courier New", monospace;
+  font-size: 14px;
+  background-color: #fff;
+  margin-right: 8px;
+  vertical-align: top;
+}
+
+/* フォーカス時に枠線と影を青くしてアクティブ状態を表示 */
+#new-todo:focus {
+  outline: none;
+  border-color: #4488ff;
+  box-shadow: 0 0 3px #4488ff;
+}
+
+/* ボタンのグラデーション背景とoutset枠線を表示 */
+#new-todo-form button {
+  width: 60px;
+  padding: 8px;
+  background: linear-gradient(180deg, #e8e8e8 0%, #b8b8b8 100%);
+  border: 2px outset #dfdfdf;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  color: #000;
+}
+
+/* ボタンクリック時に枠線と影をinsetに変更。押された感覚を表現*/
+#new-todo-form button:active {
+  border-style: inset;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ボタンホバー時に背景を明るくする */
+#new-todo-form button:hover {
+  background: linear-gradient(180deg, #f0f0f0 0%, #c8c8c8 100%);
+}
+
+/* リストのデフォルトスタイル削除と幅制限 */
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* リストアイテムにグラデーション背景と複数の枠線。立体感を表示 */
+#todo-list li {
+  background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+  border: 1px solid #999;
+  border-bottom: 2px solid #666;
+  border-right: 2px solid #666;
+  margin-bottom: 3px;
+  padding: 0;
+}
+
+/* リストアイテムホバー時に背景を薄い黄色くする */
+#todo-list li:hover {
+  background: linear-gradient(180deg, #fffacd 0%, #fffacd 100%);
+}
+
+/* Flexboxでチェックボックスとテキストを横並びに配置 */
+.view {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  gap: 8px;
+}
+
+/* チェックボックスのサイズと色を設定 */
+.toggle {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #0066cc;
+}
+
+/* ToDoテキストを可伸長領域として表示し、選択不可、ポインタカーソル */
+.content {
+  flex: 1;
+  font-size: 14px;
+  color: #000;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* 完了状態のテキストに打ち消し線と灰色を適用 */
+.completed .content {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* 削除ボタンに赤いグラデーション背景と枠線、赤いテキストを設定 */
+.destroy {
+  background: linear-gradient(180deg, #ffcccc 0%, #ff9999 100%);
+  border: 1px solid #cc0000;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #cc0000;
+  transition: none;
+}
+
+/* 削除ボタンホバー時に背景を濃い赤にする */
+.destroy:hover {
+  background: linear-gradient(180deg, #ff9999 0%, #ff6666 100%);
+}
+
+/* 削除ボタンクリック時に枠線と影をinsetに変更して押された効果を表現 */
+.destroy:active {
+  border-style: inset;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}

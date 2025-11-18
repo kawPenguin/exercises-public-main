@@ -10,38 +10,62 @@
     <link rel="stylesheet" href="/ch15.04-10/ex02/style.css" />
   </head>
   <!-- IMPORTANT: ChatGPT にはここから下の内容しか変更させないこと -->
-  <body>
-    <form id="new-todo-form">
-      <input type="text" id="new-todo" placeholder="What needs to be done?" />
-      <button>Add</button>
-    </form>
-    <ul id="todo-list">
-      <!-- NOTE: 以下のような要素を JavaScript で動的に追加する
-      <li class="completed">
-        <div class="view">
-          <input class="toggle" type="checkbox" checked />
-          <label class="content">研修の予習範囲を読む</label>
-          <button class="destroy"></button>
+  <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8 px-4">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center">ToDo List</h1>
+      
+      <form id="new-todo-form" class="mb-6 bg-white rounded-lg shadow-md p-4">
+        <div class="flex gap-2">
+          <input 
+            type="text" 
+            id="new-todo" 
+            placeholder="What needs to be done?" 
+            class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+          />
+          <button 
+            type="submit"
+            class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700 transition duration-150 ease-in-out shadow-sm hover:shadow-md"
+          >
+            Add
+          </button>
         </div>
-      </li>
-      <li>
-        <div class="view">
-          <input class="toggle" type="checkbox" />
-          <label class="content">研修の練習問題を完了する</label>
-          <button class="destroy"></button>
-        </div>
-      </li>
-      -->
-    </ul>
+      </form>
 
-    <template id="todo-template">
-      <li>
-        <div class="view">
-          <input class="toggle" type="checkbox" />
-          <label class="content"></label>
-          <button class="destroy">❌</button>
-        </div>
-      </li>
-    </template>
+      <ul id="todo-list" class="space-y-2">
+        <!-- NOTE: 以下のような要素を JavaScript で動的に追加する
+        <li class="completed">
+          <div class="view">
+            <input class="toggle" type="checkbox" checked />
+            <label class="content">研修の予習範囲を読む</label>
+            <button class="destroy"></button>
+          </div>
+        </li>
+        <li>
+          <div class="view">
+            <input class="toggle" type="checkbox" />
+            <label class="content">研修の練習問題を完了する</label>
+            <button class="destroy"></button>
+          </div>
+        </li>
+        -->
+      </ul>
+
+      <template id="todo-template">
+        <li class="bg-white rounded-lg shadow-sm hover:shadow-md transition duration-150">
+          <div class="view flex items-center gap-3 p-4">
+            <input 
+              class="toggle w-5 h-5 text-blue-500 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 cursor-pointer" 
+              type="checkbox" 
+            />
+            <label class="content flex-1 text-gray-800 cursor-pointer select-none"></label>
+            <button 
+              class="destroy text-2xl hover:scale-110 transition duration-150 ease-in-out opacity-70 hover:opacity-100"
+            >
+              ❌
+            </button>
+          </div>
+        </li>
+      </template>
+    </div>
   </body>
 </html>

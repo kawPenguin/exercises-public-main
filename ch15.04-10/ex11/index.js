@@ -6,9 +6,33 @@ const template = document.querySelector("#todo-template");
 // { content: "...", completed: true or false } の配列
 const todos = [];
 
-function renderTodos(todos) {
+// 現在のフィルタを取得する関数
+function getCurrentFilter() {
+  const hash = window.location.hash;
+  if (hash === "#/active") {
+    return "active";
+  } else if (hash === "#/completed") {
+    return "completed";
+  }
+  return "all";
+}
+
+// フィルタに基づいて ToDo をフィルタリング
+function getFilteredTodos() {
+  const filter = getCurrentFilter();
+  if (filter === "active") {
+    return todos.filter(todo => !todo.completed);
+  } else if (filter === "completed") {
+    return todos.filter(todo => todo.completed);
+  }
+  return todos;
+}
+
+function renderTodos() {
+  const filteredTodos = getFilteredTodos();
   list.innerHTML = "";
-  todos.forEach((todo, index) => {
+  
+  filteredTodos.forEach((todo) => {
     const clone = template.content.cloneNode(true);
     const li = clone.querySelector("li");
     const toggle = clone.querySelector("input");
@@ -18,14 +42,16 @@ function renderTodos(todos) {
     li.classList.toggle("completed", todo.completed);
     toggle.addEventListener("change", () => {
       todo.completed = toggle.checked;
-      renderTodos(todos);
+      renderTodos();
     });
     label.textContent = todo.content;
     toggle.checked = todo.completed;
     destroy.addEventListener("click", () => {
-      todos.splice(index, 1);
-      deleteTodo(todo.content);
-      renderTodos(todos);
+      const index = todos.indexOf(todo);
+      if (index > -1) {
+        todos.splice(index, 1);
+      }
+      renderTodos();
     });
 
     list.appendChild(li);
@@ -41,13 +67,12 @@ form.addEventListener("submit", (e) => {
   input.value = "";
 
   todos.push({ content: todo, completed: false });
-  renderTodos(todos);
+  renderTodos();
 });
 
 window.addEventListener("hashchange", () => {
-  // ここを実装してね
+  renderTodos();
 });
 
-function deleteTodo(content) {
-  todos = todos.filter((t) => t.content !== content);
-}
+// 初回レンダリング
+renderTodos();

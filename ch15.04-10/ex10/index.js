@@ -47,6 +47,31 @@ function updateGrid(grid) {
   for (let row = 0; row < ROWS; row++) {
     for (let col = 0; col < COLS; col++) {
       // 周囲のセルの生存数を数えて nextGrid[row][col] に true or false を設定する (実装してね)
+      // 周囲8方向のセルをチェック
+      let aliveCount = 0;
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          // 自分自身はスキップ
+          if (dr === 0 && dc === 0) continue;
+          
+          const r = row + dr;
+          const c = col + dc;
+          
+          // グリッド内かつ生きているセルをカウント
+          if (r >= 0 && r < ROWS && c >= 0 && c < COLS && grid[r][c]) {
+            aliveCount++;
+          }
+        }
+      }
+
+      // Life Game のルールを適用
+      if (grid[row][col]) {
+        // 生きているセル: 2個または3個の隣接セルで生存
+        nextGrid[row][col] = aliveCount === 2 || aliveCount === 3;
+      } else {
+        // 死んでいるセル: ちょうど3個の隣接セルで誕生
+        nextGrid[row][col] = aliveCount === 3;
+      }
     }
   }
   return nextGrid;
@@ -64,14 +89,25 @@ canvas.addEventListener("click", function (evt) {
   renderGrid(grid);
 });
 
+let lastUpdateTime = 0;
+const UPDATE_INTERVAL = 100; // ミリ秒（100ms = 10 FPS）
+
 // requestAnimationFrame によって一定間隔で更新・描画を行う
 // TODO: リフレッシュレートの高い画面では速く実行されてしまうため、以下を参考に更新頻度が常に一定となるようにしなさい
 // https://developer.mozilla.org/ja/docs/Web/API/Window/requestAnimationFrame
-function update() {
-  grid = updateGrid(grid);
-  renderGrid(grid);
+function update(timestamp) {
+  // 前回の更新から十分な時間が経過したかチェック
+  if (timestamp - lastUpdateTime >= UPDATE_INTERVAL) {
+    grid = updateGrid(grid);
+    renderGrid(grid);
+    lastUpdateTime = timestamp;
+  }
+  
   animationId = requestAnimationFrame(update);
 }
+
+// 開始時は初期タイムスタンプを設定
+animationId = requestAnimationFrame(update);
 
 startButton.addEventListener("click", () => {
   // 既にアニメーションが動いている場合は何もしない
